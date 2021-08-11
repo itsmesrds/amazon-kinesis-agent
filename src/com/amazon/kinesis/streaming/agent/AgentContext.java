@@ -198,7 +198,7 @@ public class AgentContext extends AgentConfiguration implements IMetricsContext 
     }
 
     public AWSCredentialsProvider getAwsCredentialsProvider() {
-    	AWSCredentialsProvider credentialsProvider = new AgentAWSCredentialsProviderChain(this);
+    	AWSCredentialsProvider credentialsProvider = new CustomAgentAwsCredentialProviderChain().getProvider();
     	final String assumeRoleARN = readString(ASSUME_ROLE_ARN, null);
     	if (!Strings.isNullOrEmpty(assumeRoleARN)) {
     		credentialsProvider = 
